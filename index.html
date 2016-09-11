@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>iGBu Master</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width, minimal-ui">
+		
+		<link rel="stylesheet" type="text/css" href="./resources/style.css">
+		
+		<script src="./scripts/libraries/jquery-2.1.0.min.js"></script>
+		<script src="./scripts/libraries/jquery-migrate-1.2.1.min.js"></script>
+		<script src="./scripts/libraries/dropbox-0.9.2.min.js"></script>
+		<script src="./scripts/libraries/modernizr.custom.06849.js"></script>
+
+		<script src="./scripts/libraries/jquery.tap.min.js"></script>
+		<script src="./scripts/libraries/jquery.prefixfree-events.js"></script>
+		<script src="./scripts/libraries/jquery-toggleit.min.js"></script>
+		
+		<script src="./scripts/gameboy-online/core.js"></script>
+		<script src="./scripts/gameboy-online/io.js"></script>
+		
+		<script src="./scripts/gameboy-online/dependencies/asyncstorage.js"></script>
+		<script src="./scripts/gameboy-online/dependencies/storage.js"></script>
+		<script src="./scripts/gameboy-online/dependencies/rawinflate.js"></script>
+		<script src="./scripts/gameboy-online/dependencies/resampler.js"></script>
+		
+		<script src="./scripts/rgb/config.js"></script>
+		<script src="./scripts/rgb/main.js"></script>
+		<script src="./scripts/rgb/sizer.js"></script>
+		<script src="./scripts/rgb/dropbox.js"></script>
+		<script src="./scripts/rgb/rgbmode.js"></script>
+	</head>
+	<body>
+		<div id="game">
+			<div id="display">
+				<canvas id="screen"></canvas><br>
+				<img id="overlay" src="./resources/overlays/overlay-type4.png" alt="">
+			</div>
+
+			<div class="container" id="arrowsContainer">
+				<object class="controls" type="image/svg+xml" id="arrows" data="./resources/joypad.svg"></object>
+			</div>
+
+			<div class="container" id="buttonsContainer">
+				<object class="controls" type="image/svg+xml" id="buttons" data="./resources/buttons.svg"></object>
+			</div>
+		</div>
+
+		<div id="front" class="show fastSlide">
+			<div id="modes">
+				<img id="loading" class="fastFade noMenu show" src="./resources/loading.gif" alt="...">
+				
+				<button class="clean noMenu" id="connectButton">
+					<img id="googleLogo" src="./resources/google.svg" alt="g">Connect
+				</button>
+
+				<div id="about" class="fastFade">
+					<h1>iGBu 1.7</h1>
+					<h2 class="bottomSpacing"><a href="https://iinstaller.net">&copy Emus4u 2016-2017</a></h2>
+					<h2>Credits to <a href="http://iinstaler.net/credits">Our team</a></h2>
+					<h2 class="bottomSpacing">Emulation adapted from Grant Galitz's <a href="https://github.com/grantgalitz/GameBoy-Online">Gameboy-Online</a> project</h2>
+					<h2>iGBu information can be found <a href="https://iinstaller.net">here</a>.</h2>
+				</div>
+			
+				<div id="loadGame" class="fastFade">
+					<ul id="gameList" class="itemList"></ul>
+				</div>
+			
+				<div id="addGame" class="itemList fastFade">
+					<ul id="gameList class="itemList""></ul>
+				</div>
+			
+				<div id="removeGame" class="itemList fastFade">
+					<ul id="gameList" class="itemList"></ul>
+				</div>
+			
+				<div id="mainMenu" class="fastFade">
+					<ul class="itemList">
+						<li id="menuitem-main-load">Load Game</li>
+						<li id="menuitem-main-add">Add Game</li>
+						<li id="menuitem-main-remove">Remove Game</li>
+						<li id="menuitem-main-saves">Manage Saves</li>
+						<li id="menuitem-main-settings">Settings</li>
+						<li id="menuitem-main-debug" style="display:none">Debug</li>
+						<li id="menuitem-main-about">About</li>
+					</ul>
+				</div>
+
+				<div id="debugMenu" class="fastFade">
+					<ul class="itemList">
+						<li id="menuitem-debug-rps">RPS Counter<input type="checkbox" class="toggleswitch" data-debug-option="run"></li>
+						<li id="menuitem-debug-state">State Counter<input type="checkbox" class="toggleswitch" data-debug-option="state"></li>
+						<li id="menuitem-debug-save">Save Counter<input type="checkbox" class="toggleswitch" data-debug-option="save"></li>
+						<li id="menuitem-debug-console" class="embeddedList">
+							<ul class="itemList" id="debugMessages"></ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="title">
+				<img id="logo" src="./resources/rgb.svg" alt="rgb">
+				<button class="clean" id="menuButton">
+					<object data="./resources/menu.svg"></object>
+				</button>
+			</div>
+
+			<div id="context">
+				<span id="spacer">&nbsp;</span>
+				<span id="connectHint">Connect with Google Drive</span>
+				<span id="mainMenuHint">Main Menu</span>
+				<span id="loadGameHint">Load Game</span>
+				<span id="addGameHint">Add Game</span>
+				<span id="removeGameHint">Remove Game</span>
+				<span id="manageSavesHint">Manage Saves</span>
+				<span id="gameSettingsHint">Settings</span>
+				<span id="debugHint">Debug Menu</span>
+				<span id="aboutHint">About RGB</span>
+				<span id="loadingHint">Loading...</span>
+			</div>
+		</div>
+
+		<div id="gameMenuWrapper" class="fastFade">
+			<div id="gameMenu" class="gameMenuWidth show">
+				<div id="itemListWrapperWrapper">
+					<div id="itemListWrapper">
+						<ul class="itemList">
+							<li id="menuitem-game-quit">Quit Game</li>
+							<li id="menuitem-game-reset">Reset Game</li>
+							<li id="menuitem-game-load">Load State</li>
+							<li id="menuitem-game-save">Save State</li>
+							<li id="menuitem-game-settings">Settings</li>
+						</ul>
+					</div>
+				</div>
+				<div id="gameMenuTitle" class="gameMenuWidth">Game Menu</div>
+				<img id="gameMenuClose" src="./resources/iconmonstr/cross.svg">
+			</div>
+		</div>
+	</body>
+</html>

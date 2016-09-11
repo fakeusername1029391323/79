@@ -1,0 +1,697 @@
+/* CSS Stylings for RGB */
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////
+/* Basics */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	background-color: #000;
+	color: #EEEEEE;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+button.clean {
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#hideAddressBar {
+	visibility: hidden;
+	display: block;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////
+/* Animation */
+
+#modes > *, #menuButton, #context > *, #front, #gameMenuWrapper {
+	opacity: 0;
+}
+
+.show {
+	opacity: 1 !important;
+}
+
+.noTransition {
+	transition: none !important;
+	-moz-transition: none !important;
+	-webkit-transition: none !important;
+}
+
+.fastFade {
+	transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-webkit-transition: opacity 0.2s linear;
+}
+
+.fastSlide {
+	transition: transform 0.6s ease-in-out;
+	-moz-transition: -moz-transform 0.6s ease-in-out;
+	-webkit-transition: -webkit-transform 0.6s ease-in-out;
+}
+
+.blurred {
+	-webkit-filter: blur(9px);
+    -moz-filter: blur(9px);
+    -o-filter: blur(9px);
+    -ms-filter: blur(9px);
+    filter: blur(9px);
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////
+/* Pre-Game UI */
+
+#front { 
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #EEEEEE;
+	opacity: 1;
+	color: #000000;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	
+	transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-webkit-transform: translateY(100%);
+}
+
+#front.show {
+	transform: translateY(0%);
+	-ms-transform: translateY(0%);
+	-moz-transform: translateY(0%);
+	-webkit-transform: translateY(0%);
+}
+
+#title {
+	padding: 15px;
+	background: #000000;
+	text-align: center;
+}
+
+#context {
+	background-color: #FFFFFF;
+	width: 100%;
+	padding: 10px 0 10px 24px;
+	border-bottom: 1px solid #D8D8D8;
+	font-family: sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	text-transform: uppercase;
+	position: fixed;
+	top: 74px;
+	left: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+#context span {
+	position: absolute;
+}
+
+#context #spacer {
+	position: relative !important;
+	display: block !important;
+	width: 0px;
+	overflow: hidden;
+	color: #FFFFFF;
+	white-space: nowrap;
+	float: left;
+}
+
+#menuButton {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 25px;
+	background: transparent;
+
+	transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-webkit-transition: opacity 0.2s linear;
+}
+
+#menuButton.active {
+	background: #FFF;
+}
+
+#menuButton object {
+	height: 24px;
+	pointer-events: none;
+}
+
+#logo {
+	height: 40px;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#modes {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 90%;
+	min-width: 150px;
+	max-width: 750px;
+	height: 100%;
+	padding-top: 113px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+
+	transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	
+	transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-webkit-transition: opacity 0.2s linear;
+}
+
+#modes > * {
+	display: none;
+	position: fixed;
+}
+
+#modes > div {
+	width: 100%;
+	height: calc(100% - 113px);
+	height: -webkit-calc(100% - 113px);
+	padding-bottom: 10px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+#loading, #connectButton {
+	margin-top: -57px;
+}
+
+#loading {
+	display: block;
+	top: 50%;
+	left: 50%;
+	opacity: 0;
+	margin-left: -32px;
+	margin-top: 24px;
+	
+	transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-webkit-transition: opacity 0.2s linear;
+}
+
+#connectButton {
+	opacity: 0;
+	top: 50%;
+	left: 50%;
+	background-color: #000000;
+	text-align: right;
+	color: #EEEEEE;
+	width: 180px;
+
+	margin-top: 20px;
+	padding: 20px;
+	border-radius: 8px;
+
+	font-family: sans-serif;
+	font-size: 25px;
+	font-weight: 100;
+
+	transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+
+	transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-webkit-transition: opacity 0.2s linear;
+}
+
+#connectButton.show {
+	animation-duration: 1s;
+	-ms-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+	animation-name: flipInY;
+	-ms-animation-name: flipInY;
+	-moz-animation-name: flipInY;
+	-webkit-animation-name: flipInY;
+
+	transition: none;
+	-moz-transition: none;
+	-webkit-transition: none;
+}
+
+#googleLogo {
+	height: 30px;
+	padding: 0 20px 0 0;
+	float: left;
+}
+
+#about {
+	text-align: center;
+}
+
+h1, h2 {
+	font-weight: 100;
+}
+
+h1 {
+	font-size: 60px;
+	margin: 10px 0 0;
+}
+
+h2 {
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+
+h2.bottomSpacing {
+	margin-bottom: 30px;
+}
+
+#aboutClose {
+	background-color: #000;
+	color: #EEE;
+	font-size: 20px;
+	padding: 10px 35px;
+	border-radius: 8px;
+	margin-top: 30px;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.itemList {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 22px;
+	font-weight: 100;
+}
+
+.itemList li {
+	padding: 10px 8px;
+	border-bottom: 1px solid #D8D8D8;
+	cursor: pointer;
+	list-style: none;
+}
+
+.itemList li:last-child {
+	border: none;
+}
+
+.itemList li.embeddedList {
+	padding: 0;
+	border-top: 2px solid #D8D8D8;
+}
+
+.rightside {
+	float: right;
+	padding-left: 15px;
+}
+
+.toggleswitch {
+	display: inline-block;
+	float: right;
+	margin-top: 2px;
+}
+
+.menuitem-checkbox {
+	height: 18px;
+	width: 18px;
+	background: url('./iconmonstr/checkbox-empty.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin: 3px 0 0 -25px;
+	position: absolute;
+}
+
+.menuitem-checkbox.checked {
+	background: url('./iconmonstr/checkbox-checked.svg');
+	background-size: contain;
+}
+
+.itemList .letterSectionHeader {
+	border: none;
+	text-align: center;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////
+/* Game UI */
+
+#game {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+#display {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	line-height: 0;
+	font-size: 0;
+}
+
+#screen {
+	position: relative;
+	margin-left: -50%;
+	background-color: #333;
+}
+
+#overlay {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin-left: -50%;
+	opacity: .2;
+	pointer-events: none;
+	
+	transform: translateY(-100%);
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
+}
+
+.container {
+	position: fixed;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 50%;
+	height: 100%;
+	pointer-events: none;
+}
+
+#arrowsContainer {
+	left: 0;
+}
+#buttonsContainer {
+	right: 0;
+	text-align: right;
+}
+
+.controls {
+	position: relative;
+	max-width: 2.5in;
+	min-width: 133px;
+	max-height: 2.5in;
+	min-height: 133px;
+	width: 100%;
+	opacity: .5;
+	pointer-events: auto;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////
+/* In-Game Menu */
+
+#gameMenuWrapper {
+	display: none;
+	opacity: 0;
+	background: rgba(0,0,0,0.4);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	color: black;
+	top: 0;
+	left: 0;
+}
+
+.gameMenuWidth {
+	width: 70%;
+	max-width: 400px;
+	min-width: 280px;
+}
+
+#gameMenu {
+	position: fixed;
+	height: 80%;
+	background-color: #EEEEEE;
+	opacity: 1;
+	color: #000000;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	max-height: 290px;
+}
+
+#itemListWrapperWrapper {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 90%;
+	min-width: 150px;
+	max-width: 500px;
+	height: 100%;
+	padding-top: 49px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+
+	transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+}
+
+#itemListWrapper {
+	position: fixed;
+	width: 100%;
+	height: calc(100% - 48px);
+	height: -webkit-calc(100% - 48px);
+	padding-bottom: 5px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+#gameMenuTitle {
+	background-color: #FFFFFF;
+	padding: 15px 0;
+	border-bottom: 1px solid #D8D8D8;
+	font-family: sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	text-transform: uppercase;
+	position: fixed;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	text-align: center;
+}
+
+#gameMenuClose {
+	position: absolute;
+	height: 25px;
+	padding: 11px 13px;
+	cursor: pointer;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////
+/* Debugging Interface */
+
+#saveCount {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: #FF0;
+	padding: 0px 2px;
+	height: 30px;
+	background-color: #000;
+	white-space: pre;
+	line-height: 0.8em;
+}
+
+#saveCount:before {
+	content: 'saves:\A';
+	font-size: 9px;
+	color: #FF0;
+}
+
+#rps {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	color: #0FF;
+	height: 30px;
+	background-color: #000;
+	white-space: pre;
+	line-height: 0.8em;
+	text-align: right;
+}
+
+#rps:before {
+	content: 'avg rps:\A';
+	font-size: 9px;
+	color: #0FF;
+	padding: 0px 2px;
+}
+
+#stateCount {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+	color: #F0F;
+	height: 30px;
+	background-color: #000;
+	white-space: pre;
+	line-height: 0.8em;
+	text-align: center;
+	width: 70px;
+}
+
+#stateCount:before {
+	content: 'state saves:\A';
+	font-size: 9px;
+	color: #F0F;
+}
+
+#debugMessages ul li {
+	cursor: default;
+}
+
+.consoleInfo {
+	color: #19A7DC;
+}
+
+.consoleWarn {
+	color: #ED9325;
+}
+
+.consoleError {
+	color: #C91C38;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Animate.css Resources
+/* Copyright 2013 Dan Eden
+/* Modified by Trey Keown
+/* This section falls under the MIT license. See LICENSE.md for more information */
+
+@keyframes flipInY {
+	0% {
+		transform: translateX(-50%) perspective(400px) rotateY(90deg);
+		opacity: 0; }
+	40% {
+		transform: translateX(-50%) perspective(400px) rotateY(-10deg); }
+	70% {
+		transform: translateX(-50%) perspective(400px) rotateY(10deg); }
+	100% {
+		transform: translateX(-50%) perspective(400px) rotateY(0deg);
+		opacity: 1; }}
+@-ms-keyframes flipInY {
+	0% {
+		-ms-transform: translateX(-50%) perspective(400px) rotateY(90deg);
+		opacity: 0; }
+	40% {
+		-ms-transform: translateX(-50%) perspective(400px) rotateY(-10deg); }
+	70% {
+		-ms-transform: translateX(-50%) perspective(400px) rotateY(10deg); }
+	100% {
+		-ms-transform: translateX(-50%) perspective(400px) rotateY(0deg);
+		opacity: 1; }}
+@-moz-keyframes flipInY {
+	0% {
+		-moz-transform: translateX(-50%) perspective(400px) rotateY(90deg);
+		opacity: 0; }
+	40% {
+		-moz-transform: translateX(-50%) perspective(400px) rotateY(-10deg); }
+	70% {
+		-moz-transform: translateX(-50%) perspective(400px) rotateY(10deg); }
+	100% {
+		-moz-transform: translateX(-50%) perspective(400px) rotateY(0deg);
+		opacity: 1; }}
+@-webkit-keyframes flipInY {
+	0% {
+		-webkit-transform: translateX(-50%) perspective(400px) rotateY(90deg);
+		opacity: 0; }
+	40% {
+		-webkit-transform: translateX(-50%) perspective(400px) rotateY(-10deg); }
+	70% {
+		-webkit-transform: translateX(-50%) perspective(400px) rotateY(10deg); }
+	100% {
+		-webkit-transform: translateX(-50%) perspective(400px) rotateY(0deg);
+		opacity: 1; }}
+
+.flipInY {
+	animation-duration: 1s;
+	-ms-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+	animation-name: flipInY;
+	-ms-animation-name: flipInY;
+	-moz-animation-name: flipInY;
+	-webkit-animation-name: flipInY;
+}
+
+/* End Animate.css section */
+/*/////////////////////////////////////////////////////////////////////////////////////////////////
+/* Responsive Game Controls */
+
+@media (max-aspect-ratio: 160/144) {
+	
+	.container {
+		top: 100%;
+	}
+	
+	#arrowsContainer {
+		padding: 0 15px 0 2px;
+	}
+	
+	#buttonsContainer {
+		padding: 0 2px 0 15px;
+	}
+	
+	.controls {
+		transform: translateY(-100%);
+		-webkit-transform: translateY(-100%);
+		-moz-transform: translateY(-100%);
+		-ms-transform: translateY(-100%);
+	}
+	
+}
+
+@media (min-aspect-ratio: 160/144) {
+	
+	.container {
+		top: 50%;
+	}
+	
+	#arrowsContainer {
+		padding: 0 80px 0 10px;
+	}
+	
+	#buttonsContainer {
+		padding: 0 10px 0 80px;
+	}
+	
+	.controls {
+		max-height: 65%;
+		
+		transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+	}
+	
+}
